@@ -15,12 +15,10 @@ const Wishlist = lazy(() => import('../pages/Wishlist'));
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
-  
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-  
-  return isAuthenticated ? children : <Navigate to="/" />;
+
+  if (isLoading) return null; // 👈 spinner remove, avoids deadlock
+
+  return isAuthenticated ? children : <Navigate to="/" replace />;
 };
 
 function AppRoutes() {

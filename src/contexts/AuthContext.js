@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 export const useAuth = () => useContext(AuthContext);
 
@@ -10,58 +10,63 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check for saved user session
-    const savedUser = localStorage.getItem('luxe-user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
+    // 🔥 PRODUCTION-SAFE AUTH INIT
+    try {
+      if (typeof window !== 'undefined') {
+        const savedUser = localStorage.getItem('luxe-user');
+        if (savedUser) {
+          setUser(JSON.parse(savedUser));
+        }
+      }
+    } catch (error) {
+      console.error('Auth init error:', error);
+      setUser(null);
+    } finally {
+      setIsLoading(false); // 🚨 THIS FIXES BLANK SCREEN
     }
-    setIsLoading(false);
   }, []);
 
   const login = async (email, password) => {
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Mock user data
+
+    const name = email.split('@')[0];
     const mockUser = {
       id: 1,
       email,
-      name: email.split('@')[0],
-      avatar: `https://ui-avatars.com/api/?name=${email.split('@')[0]}&background=4ecdc4&color=fff`
+      name,
+      avatar: `https://ui-avatars.com/api/?name=${name}&background=4ecdc4&color=fff`
     };
-    
+
     setUser(mockUser);
     localStorage.setItem('luxe-user', JSON.stringify(mockUser));
-    // persist a simple user id for remote cart sync
-    try { localStorage.setItem('luxe-user-id', String(mockUser.id)); } catch (e) {}
+    localStorage.setItem('luxe-user-id', String(mockUser.id));
+
     toast.success(`Welcome back, ${mockUser.name}!`);
-    
     return mockUser;
   };
 
   const register = async (name, email, password) => {
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     const newUser = {
       id: Date.now(),
       email,
       name,
       avatar: `https://ui-avatars.com/api/?name=${name}&background=ff6b6b&color=fff`
     };
-    
+
     setUser(newUser);
     localStorage.setItem('luxe-user', JSON.stringify(newUser));
-    try { localStorage.setItem('luxe-user-id', String(newUser.id)); } catch (e) {}
+    localStorage.setItem('luxe-user-id', String(newUser.id));
+
     toast.success(`Welcome to LuxeCart, ${name}!`);
-    
     return newUser;
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem('luxe-user');
-    try { localStorage.removeItem('luxe-user-id'); } catch (e) {}
+    localStorage.removeItem('luxe-user-id');
     toast('See you next time! 👋');
   };
 
