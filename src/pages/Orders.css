@@ -1,0 +1,240 @@
+.orders-page { 
+  padding: 24px; 
+}
+
+.orders-header { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 12px; 
+  margin-bottom: 18px; 
+}
+
+.orders-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+.orders-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+
+.order-card { 
+  border: 1px solid var(--border-color); 
+  padding: 16px; 
+  border-radius: 8px; 
+  background: white; 
+  transition: transform .12s ease, box-shadow .12s ease; 
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.order-card.cancelled { 
+  filter: grayscale(0.5);
+  opacity: 0.8;
+  border-left: 4px solid #ef4444;
+}
+
+.order-row { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 12px; 
+  font-size: 0.95rem; 
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.order-items { 
+  border-top: 1px dashed rgba(0,0,0,0.1); 
+  padding-top: 12px; 
+  margin-top: 8px; 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-item { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  padding: 8px; 
+  background: var(--background-secondary);
+  border-radius: 6px;
+}
+
+.item-image { 
+  width: 56px; 
+  height: 56px; 
+  background: white; 
+  border-radius: 6px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.item-image img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.img-fallback { 
+  width: 56px; 
+  height: 56px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+}
+
+.item-title {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.item-qty {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.item-price {
+  font-weight: 600;
+  color: var(--primary);
+  min-width: 80px;
+  text-align: right;
+}
+
+.order-footer { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  gap: 1rem;
+}
+
+.order-status { 
+  padding: 6px 12px; 
+  border-radius: 999px; 
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.order-status.Delivered { 
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981; 
+}
+
+.order-status.Cancelled { 
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444; 
+}
+
+.order-status.Processing,
+.order-status.Confirmed,
+.order-status.Shipped { 
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b; 
+}
+
+.empty-orders { 
+  padding: 40px; 
+  text-align: center; 
+  color: var(--text-secondary); 
+  background: white; 
+  border-radius: 8px;
+  border: 1px dashed var(--border-color);
+}
+
+.orders-tabs { 
+  display: flex; 
+  gap: 8px; 
+  margin: 12px 0 18px; 
+}
+
+.tab-btn { 
+  background: white; 
+  border: 1px solid var(--border-color); 
+  padding: 8px 16px; 
+  border-radius: 8px; 
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.tab-btn.active { 
+  background: var(--primary); 
+  border-color: var(--primary);
+  color: white;
+}
+
+.orders-stats { 
+  display: flex; 
+  gap: 16px; 
+  align-items: center; 
+}
+
+.orders-stats .stat { 
+  text-align: center;
+  padding: 8px 12px;
+  background: var(--background-secondary);
+  border-radius: 6px;
+}
+
+.orders-stats .stat strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.orders-stats .muted {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.order-reason {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .order-row { 
+    flex-direction: column; 
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .order-footer { 
+    flex-direction: column; 
+    gap: 8px; 
+    align-items: flex-start; 
+  }
+  
+  .orders-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .orders-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

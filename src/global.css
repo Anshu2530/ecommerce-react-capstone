@@ -1,0 +1,130 @@
+@import './variables.css';
+@import './animations.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Utility layout tweaks */
+.site-header { background: transparent; position: sticky; top:0; z-index:1100; }
+.main { display:flex; flex-direction:column; gap:24px; }
+
+/* Improve base typography */
+h1,h2,h3 { font-family: var(--font-heading); color: var(--dark); }
+p { color: var(--gray); }
+
+/* Ensure product grid items stretch */
+.products-grid > * { display:flex; }
+.products-grid > * > .product-card { flex:1; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* Accessible focus outlines */
+/* Remove default outline but provide a clear focus-visible style */
+:focus {
+  outline: none;
+}
+
+:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Stronger ring for primary interactive elements */
+.btn:focus-visible,
+.auth-form input:focus-visible,
+.search-input:focus-visible,
+.mobile-link:focus-visible {
+  box-shadow: 0 0 0 4px rgba(78,205,196,0.14);
+}
+
+/* Cart sidebar */
+.cart-sidebar {
+  position: fixed;
+  right: -420px;
+  top: 0;
+  height: 100vh;
+  width: 380px;
+  background: white;
+  box-shadow: -12px 0 30px rgba(0,0,0,0.08);
+  transition: right 0.28s ease;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+}
+.cart-sidebar.open { right: 0; }
+.cart-header { display:flex; align-items:center; justify-content:space-between; padding:16px; border-bottom:1px solid var(--gray-light);} 
+.cart-body { padding:12px; flex:1; overflow:auto; }
+.cart-footer { padding:12px; border-top:1px solid var(--gray-light); }
+.cart-items { list-style:none; display:flex; flex-direction:column; gap:12px; }
+.cart-item { display:flex; gap:8px; align-items:center; background:transparent; padding:8px; border-radius:8px; }
+.cart-thumb { width:64px; height:64px; object-fit:contain; background:#fff; border-radius:6px; border:1px solid #eee; }
+.cart-item-info { flex:1; }
+.cart-item-title { font-weight:600; font-size:0.95rem; margin-bottom:6px; }
+.cart-item-meta { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.qty-controls { display:flex; align-items:center; gap:8px; }
+.qty-controls button { width:28px; height:28px; border-radius:6px; border:1px solid var(--gray-light); background:white; }
+.remove-btn { background:transparent; border:none; font-size:18px; color:var(--danger); }
+.cart-total { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.cart-actions { display:flex; gap:8px; }
+.btn { padding:10px 12px; border-radius:8px; border:1px solid var(--gray-light); cursor:pointer; background:white; transition: all 0.2s; }
+.btn.primary { background:var(--primary); color:white; border:none; }
+.btn.secondary, .btn-secondary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: white; border: none; padding: 12px 24px; font-weight: 600; border-radius: 10px; cursor: pointer; transition: all 0.3s; }
+.btn.secondary:hover, .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3); }
+.checkout-form input { width:100%; padding:8px 10px; margin-bottom:8px; border:1px solid var(--gray-light); border-radius:6px; }
+
+@media (max-width: 768px) {
+  .cart-sidebar { width: 100%; right: -100%; }
+  .cart-sidebar.open { right: 0; }
+}
