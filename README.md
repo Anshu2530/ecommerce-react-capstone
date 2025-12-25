@@ -2,7 +2,7 @@
 
 A professional, full-featured e-commerce React application built with modern technologies. Luxe Cart provides a seamless shopping experience with authentication, product browsing, cart management, checkout, and order tracking.
 
-**Live Demo:** [Deploy on Vercel](#deployment)
+**🌐 Live Demo:** https://ecommerce-react-capstone.vercel.app
 
 ---
 
