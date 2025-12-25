@@ -23,9 +23,12 @@ export const useProducts = () => {
     try {
       setLoading(true);
       setError(null);
+      
+      console.log('Fetching products...');
 
       // Fetch all products (no category filter)
       const productsData = await api.fetchProducts();
+      console.log('Products fetched:', productsData.length);
       
       // Map mainCategory
       const withMainCategory = productsData.map((item) => ({
