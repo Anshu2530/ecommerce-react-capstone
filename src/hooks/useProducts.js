@@ -30,6 +30,12 @@ export const useProducts = () => {
       const productsData = await api.fetchProducts();
       console.log('Products fetched:', productsData.length);
       
+      // If no products, use mock data
+      if (!productsData || productsData.length === 0) {
+        console.warn('No products returned, using mock data');
+        throw new Error('No products available');
+      }
+      
       // Map mainCategory
       const withMainCategory = productsData.map((item) => ({
         ...item,
@@ -37,14 +43,20 @@ export const useProducts = () => {
       }));
 
       setProducts(withMainCategory);
+      console.log('Products set successfully');
       
       // Fetch categories
       const categoriesData = await api.fetchCategories();
       setCategories(categoriesData);
     } catch (err) {
-      setError(err.message);
       console.error("Error fetching data:", err);
+      setError(err.message);
+      
+      // Fallback: Set empty array so UI doesn't stay blank
+      setProducts([]);
+      setCategories([]);
     } finally {
+      console.log('Setting loading to false');
       setLoading(false);
     }
   };

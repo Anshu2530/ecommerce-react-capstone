@@ -30,8 +30,16 @@ const Home = () => {
     }
   };
 
+  console.log('Home render - loading:', loading, 'products:', products.length, 'error:', error);
+
   if (loading) return <LoadingSpinner />;
-  if (error) return <div className="error-state">Error loading products</div>;
+  if (error) return (
+    <div className="error-state" style={{ padding: '50px', textAlign: 'center' }}>
+      <h2>Error loading products</h2>
+      <p>{error}</p>
+      <button onClick={() => window.location.reload()}>Retry</button>
+    </div>
+  );
 
   return (
     <div className="home">
