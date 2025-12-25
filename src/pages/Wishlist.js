@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { wishlistService } from '../services/WishlistService';
+import { wishlistService } from '../services/wishlistService';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';

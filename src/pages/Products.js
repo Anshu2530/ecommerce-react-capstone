@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useProducts } from '../hooks/UseProducts';
+import { useProducts } from '../hooks/useProducts';
 import LoadingSpinner from '../components/Shared/LoadingSpinner';
 import ProductCard from '../components/ProductCard/ProductCard';
 import './Home.css';

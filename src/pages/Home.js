@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, TrendingUp, Shield, Truck, Clock, X, Mail } from 'lucide-react';
 import ProductCard from '../components/ProductCard/ProductCard';
-import { useProducts } from '../hooks/UseProducts';
+import { useProducts } from '../hooks/useProducts';
 import LoadingSpinner from '../components/Shared/LoadingSpinner';
 import './Home.css';
 

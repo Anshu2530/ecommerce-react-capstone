@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "../services/Api";
+import { api } from "../services/api";
 
 const categoryMap = {
   "women's clothing": "Women",
