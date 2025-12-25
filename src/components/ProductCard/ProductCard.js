@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ShoppingBag, Star, Eye, Heart } from "lucide-react";
 import { useCart } from "../../contexts/CartContext";
 import { useAuth } from "../../contexts/AuthContext";
-import { wishlistService } from "../../services/wishlistService";
+import { wishlistService } from "../../services/WishlistService";
 import "./ProductCard.css";
 
 const ProductCard = ({ product }) => {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { ordersService } from '../services/ordersService';
-import { wishlistService } from '../services/wishlistService';
+import { ordersService } from '../services/OrdersService';
+import { wishlistService } from '../services/WishlistService';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, MapPin, Edit2, Package, Heart, ShoppingBag, LogOut, ChevronRight, CheckCircle, XCircle, Clock, ShoppingCart } from 'lucide-react';
 import './Profile.css';

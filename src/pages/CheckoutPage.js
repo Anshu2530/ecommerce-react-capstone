@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
-import { ordersService } from '../services/ordersService';
+import { ordersService } from '../services/OrdersService';
 import { motion } from 'framer-motion';
 import { 
   MapPin, 

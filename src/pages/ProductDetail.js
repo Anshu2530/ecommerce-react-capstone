@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import { useAuth } from "../contexts/AuthContext";
-import { api } from "../services/api";
+import { api } from "../services/Api";
 import { Heart, ShoppingCart, Star, ArrowLeft, Truck, Shield, RefreshCw } from "lucide-react";
 import LoadingSpinner from "../components/Shared/LoadingSpinner";
 import toast from "react-hot-toast";

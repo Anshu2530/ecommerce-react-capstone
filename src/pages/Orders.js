@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ordersService } from '../services/ordersService';
+import { ordersService } from '../services/OrdersService';
 import { useAuth } from '../contexts/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Orders.css';

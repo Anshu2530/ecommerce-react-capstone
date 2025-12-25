@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/Shared/LoadingSpinner';
+import MinimalTest from '../pages/MinimalTest';
 
 // Lazy load pages for code splitting
 const Home = lazy(() => import('../pages/Home'));
@@ -25,6 +26,7 @@ function AppRoutes() {
   return (
     <Suspense fallback={<LoadingSpinner fullScreen />}>
       <Routes>
+        <Route path="/test" element={<MinimalTest />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<ProductDetail />} />
