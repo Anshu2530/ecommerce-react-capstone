@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import ErrorBoundary from './components/Shared/ErrorBoundary';
-import reportWebVitals from './ReportWebVitals';
+import reportWebVitals from './reportWebVitals';
 
 console.log('Index.js loaded - React app starting...');
 
